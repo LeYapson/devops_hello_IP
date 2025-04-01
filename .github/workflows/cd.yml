@@ -24,4 +24,4 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        helm upgrade --install hello_ip ./hello_ip
+        helm upgrade --install hello_ip ./chart/hello_ip
