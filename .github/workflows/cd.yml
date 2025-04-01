@@ -24,4 +24,4 @@ jobs:
 
     - name: Deploy with Helm
       run: |
-        helm upgrade --install hello_ip ./hello_ip
+        helm upgrade --install hello-ip ./hello_ip
