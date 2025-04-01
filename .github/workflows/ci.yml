@@ -33,15 +33,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t hello_ip .
-
-    - name: Install Docker Scan plugin
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/docker/scan-cli-plugin/main/scripts/install.sh | sh
-
-    - name: Run Docker Scan
-      run: |
-        docker scan hello_ip
+        docker build -t ${{ secrets.DOCKER_USERNAME }}/hello_ip .
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
@@ -49,6 +41,15 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Install Docker Scout
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/docker/scout-cli/main/install.sh -o install-scout.sh
+        sh install-scout.sh
+
+    - name: Run Docker Scout
+      run: |
+        docker scout quickview ${{ secrets.DOCKER_USERNAME }}/hello_ip
+
     - name: Push Docker image
       run: |
-        docker push hello_ip
+        docker push ${{ secrets.DOCKER_USERNAME }}/hello_ip
