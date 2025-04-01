@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "hello_ip.chart" -}}
+{{- define "helloip.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "hello_ip.labels" -}}
-helm.sh/chart: {{ include "hello_ip.chart" . }}
-{{ include "hello_ip.selectorLabels" . }}
+{{- define "helloip.labels" -}}
+helm.sh/chart: {{ include "helloip.chart" . }}
+{{ include "helloip.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "hello_ip.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "hello_ip.name" . }}
+{{- define "helloip.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "helloip.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "hello_ip.serviceAccountName" -}}
+{{- define "helloip.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "hello_ip.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "helloip.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
