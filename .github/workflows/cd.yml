@@ -22,6 +22,6 @@ jobs:
       with:
         version: v3.14.0
 
-    - name: Deploy with Helm
+    - name: Deploy to Kubernetes
       run: |
         helm upgrade --install hello_ip ./hello_ip
