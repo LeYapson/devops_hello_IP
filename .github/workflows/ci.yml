@@ -35,9 +35,9 @@ jobs:
       run: |
         docker build -t hello_ip .
 
-    - name: Run Docker Scout
+    - name: Run Docker Scan
       run: |
-        docker scout quickview hello_ip
+        docker scan hello_ip
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v1
