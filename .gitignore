@@ -1,0 +1,14 @@
+.terraform
+terraform.tfsate
+# Ignorer les fichiers générés par Terraform
+.terraform
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*.tfplan
+*.tfplan.*
+.terraform.lock.hcl
+terraform/.terraform/
+terraform/.terraform.lock.hcl
