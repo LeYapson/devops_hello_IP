@@ -1,4 +1,4 @@
-name: CD
+name: CD Pipeline
 
 on:
   push:
@@ -22,6 +22,6 @@ jobs:
       with:
         version: v3.14.0
 
-    - name: Deploy to Kubernetes
+    - name: Deploy with Helm
       run: |
-        helm upgrade --install hello-ip ./chart/hello_ip
+        helm upgrade --install hello_ip ./hello_ip
